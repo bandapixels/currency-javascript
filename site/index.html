@@ -1,0 +1,45 @@
+<html>
+<head>
+    <!--
+    This is the library that provides websocket streaming pub/sub
+    The dev serverver is serving the html and javascript, but it also provides updating fx data on /fx/prices.
+     -->
+    <script src="stomp.js"></script>
+    <script src="sparkline.js"></script>
+</head>
+<body>
+
+<!-- This is a description of what you should do for this task.  You can remove it for your answer -->
+<section class="content">
+    <p>Changed some styles to make centered table.</p>
+    <p>
+        On websocket connect we start listening <code>/fn/prices</code> to get information about currency pair.<br>
+        At the beginning we have empty array <code>currenciesPairsInfo</code> with the currency pairs.<br>
+        On each new websocket message we run <code>updateData</code> function that add or update info about currency pair,<br>
+        also add or update two properties <code>arrTimer</code> array with mid price and <code>arrPoints</code> with points (average price) for graphs.<br>
+        After update, run <code>renderTable</code> that sort <code>currenciesPairsInfo</code> array, make table empty,<br>
+        then creates new rows with updated info and add it to the table.<br>
+        Each 30 seconds runs <code>renderGraph</code> functions that map through <code>currenciesPairsInfo</code>,<br>
+        calculate average price and push this value to the <code>arrPoints</code>,<br>
+        after that <code>arrTimer</code> makes empty to collect new mid prices to calculate new point.
+    </p>
+    <p>
+        We can use React to design views for each state in app,<br>
+        and React will efficiently update and render just the right components when some data changes.<br>
+        It gives us an opportunity to build encapsulated components that manage their own state,<br>
+        then compose them to make complex UIs.<br>
+        I see no reason to replace stomp and sparkline because they are suitable for the task at hand.
+    </p>
+    <p>
+        Name: Igor<br>
+        Email: <a href="mailto:etcetc1820@gmail.com">etcetc1820@gmail.com</a>
+    </p>
+    <table id="currencies-table"></table>
+</section>
+
+<!-- Code you write in index.js and anything it depends on will be bundled into bundle.js and
+     is included here -->
+<script src="bundle.js"></script>
+
+</body>
+</html>
